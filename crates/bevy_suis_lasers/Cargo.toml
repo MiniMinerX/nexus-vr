@@ -8,7 +8,7 @@ rust-version.workspace = true
 
 [dependencies]
 # really should pin a commit here
-bevy-suis = { git = "https://github.com/Schmarni-Dev/bevy-suis", branch = "further_work" }
+bevy-suis = { git = "https://github.com/MiniMinerX/bevy-suis", branch = "furthur_work_rollback" }
 bevy = { version = "0.14", default-features = false }
 
 [lints]
