@@ -37,12 +37,14 @@ pub mod networking;
 mod physics_sync;
 mod player_networking;
 
+#[bevy_main]
+
 pub fn main() {
 	App::new()
 		.add_plugins((
 			EmbeddedAssetPlugin::default(),
 			bevy_web_file_drop::WebFileDropPlugin,
-			/*bevy_mod_openxr::add_xr_plugins(*/
+			bevy_mod_openxr::add_xr_plugins(
 			DefaultPlugins
 				.set(WindowPlugin {
 					primary_window: Some(Window {
@@ -59,8 +61,8 @@ pub fn main() {
 				.set(AssetPlugin {
 					meta_check: AssetMetaCheck::Never,
 					..AssetPlugin::default()
-				}), /*)*/
-			//bevy_xr_utils::xr_utils_actions::XRUtilsActionsPlugin,
+				}), ),
+			bevy_xr_utils::xr_utils_actions::XRUtilsActionsPlugin,
 			PhysicsPlugins::default(),
 			VrControllerPlugin,
 		))
@@ -68,7 +70,7 @@ pub fn main() {
 			SuisCorePlugin,
 			SuisWindowPointerPlugin,
 			SuisDebugGizmosPlugin,
-			//(bevy_suis_lasers::draw_lasers::LaserPlugin, bevy_suis_lasers::laser_input_methods::LaserInputMethodPlugin)
+			(bevy_suis_lasers::draw_lasers::LaserPlugin, bevy_suis_lasers::laser_input_methods::LaserInputMethodPlugin)
 		))
 		.add_plugins(bevy_spatial_egui::SpatialEguiPlugin)
 		.add_plugins(EguiPlugin)
