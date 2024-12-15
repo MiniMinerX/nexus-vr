@@ -87,7 +87,7 @@ fn update_things(
 		} else {
 			DEFAULT_LASER_LENGHT as f32
 		};
-		info!("distance: {distance}");
+		//info!("distance: {distance}");
 		let transform = location.compute_transform();
 
 		laser.ray.origin = transform.translation;
