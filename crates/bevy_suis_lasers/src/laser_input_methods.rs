@@ -116,7 +116,7 @@ fn setup_methods(
 			XrControllerInputMethodData::default(),
 			SpatialBundle::default(),
 			Lazer(lazer_left),
-			PointerInputMethod(Ray3d::new(Vec3::ZERO, Vec3::NEG_Z)),
+			PointerInputMethod(Ray3d::new(Vec3::ZERO, Dir3::NEG_Z)),
 			HandSide::Left,
 		))
 		.id();
@@ -125,13 +125,13 @@ fn setup_methods(
 			XrControllerInputMethodData::default(),
 			SpatialBundle::default(),
 			Lazer(lazer_right),
-			PointerInputMethod(Ray3d::new(Vec3::ZERO, Vec3::NEG_Z)),
+			PointerInputMethod(Ray3d::new(Vec3::ZERO, Dir3::NEG_Z)),
 			HandSide::Right,
 		))
 		.id();
 	// not super clean but hopefully avoids depending on bevy_mod_*xr
 	for (e, side) in &query {
-		cmds.entity(e).push_children(&[match side {
+		cmds.entity(e).add_children(&[match side {
 			HandSide::Left => left,
 			HandSide::Right => right,
 		}]);

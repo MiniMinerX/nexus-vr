@@ -27,7 +27,7 @@ struct LaserSegmentStuff {
 impl Laser {
 	pub fn new() -> Laser {
 		Laser {
-			ray: Ray3d::new(Vec3::ZERO, Vec3::NEG_Z),
+			ray: Ray3d::new(Vec3::ZERO, Dir3::NEG_Z),
 			current_dir: Dir3::NEG_Z,
 			length: 1.0,
 		}
@@ -91,7 +91,7 @@ fn update_laser(
 
 		laser.current_dir = laser.current_dir.slerp(
 			laser.ray.direction,
-			time.delta_seconds() * INTERPOLATION_SPEED,
+			time.delta_secs() * INTERPOLATION_SPEED,
 		);
 
 		// Calculate length
@@ -136,12 +136,18 @@ fn update_laser(
 				scale: Vec3::new(1.0, segment_length / SEGMENT_LENGTH, 1.0),
 			};
 
-			let bundle = PbrBundle {
-				mesh: laser_segment_stuff.mesh.clone_weak(),
-				material: laser_segment_stuff.material.clone_weak(),
-				transform,
-				..Default::default()
-			};
+			let bundle = //PbrBundle {
+			//	mesh: laser_segment_stuff.mesh.clone_weak(),
+			//	material: laser_segment_stuff.material.clone_weak(),
+			//	transform,
+			//	..Default::default()
+			//}
+			(
+				Mesh3d(laser_segment_stuff.mesh.clone_weak()),
+				MeshMaterial3d(laser_segment_stuff.material.clone_weak()),
+				Transform::from(transform),
+			)
+			;
 			let child = commands.spawn(bundle).id();
 			commands.entity(entity).add_child(child);
 
