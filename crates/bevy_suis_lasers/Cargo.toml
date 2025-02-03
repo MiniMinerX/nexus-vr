@@ -8,7 +8,7 @@ rust-version.workspace = true
 
 [dependencies]
 # really should pin a commit here
-bevy-suis = { git = "https://github.com/MiniMinerX/bevy-suis.git", branch = "dev-bevy-0.15"}
+bevy-suis = { git = "https://github.com/Schmarni-Dev/bevy-suis.git", branch = "main"}
 bevy = { version = "0.15", default-features = false }
 
 [lints]
@@ -17,4 +17,4 @@ workspace = true
 [dev-dependencies]
 bevy = { version = "0.15", default-features = true }
 #bevy_mod_openxr.git = "https://github.com/awtterpip/bevy_oxr"
-bevy_mod_openxr = { git = "https://github.com/MiniMinerX/bevy_oxr.git", branch = "dev/bevy-0.15.0"}
+bevy_mod_openxr = { git = "https://github.com/awtterpip/bevy_oxr.git"}
